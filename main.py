@@ -31,8 +31,8 @@ chats = db["chats"]
 chats.create_index("session_id")
 
 
-OPENAI_API_KEY = "sk-proj-gq2kh5k17jLc9qHnhz0IT3BlbkFJcbR6AsLCvmt7fapDfBA8"
-gemini_api_key = "AIzaSyCcpLdNr3XmsgfcO8FntQnqXid_c1iS6_g"
+OPENAI_API_KEY = os.environ["open_ai"]
+gemini_api_key = os.environ["gemini_key"]
 
 app.add_middleware(
     CORSMiddleware,
