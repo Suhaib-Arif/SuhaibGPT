@@ -40,8 +40,8 @@ async def get_db():
     db = clientdb = client["chats"]["chats"]
     return db
 
-OPENAI_API_KEY = "sk-proj-gq2kh5k17jLc9qHnhz0IT3BlbkFJcbR6AsLCvmt7fapDfBA8"
-gemini_api_key = "AIzaSyCcpLdNr3XmsgfcO8FntQnqXid_c1iS6_g"
+OPENAI_API_KEY = os.environ["openai_api"]
+gemini_api_key = os.environ["Gemini_api"]
 
 app.add_middleware(
     CORSMiddleware,
