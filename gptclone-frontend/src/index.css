@@ -1,12 +1,13 @@
-html {
-  height: 95%;
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* Prevent the body from scrolling */
 }
-
 body {
   background-color: rgb(6, 3, 32);
   color: antiquewhite;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  height: 100%;
 }
 
 /* Style the entire scrollbar */
@@ -34,50 +35,51 @@ body {
 
 .App {
   display: flex;
-  height: 100%;
-
+  height: 100vh; /* Make sure App takes full viewport height */
 }
 
-.sidebar{
-  flex: 1 1; /* Allow to grow and shrink */
+.sidebar {
+  flex: 1 1 0; /* Ensure the sidebar grows and shrinks properly */
   border-right: 1px solid rgb(105, 101, 101);
   display: flex;
   flex-direction: column;
-  /* padding: 1rem; */
-  overflow-y: scroll;
-  overflow-x: hidden;
+  overflow-y: auto; /* Only the sidebar will scroll */
+  min-width: 17vw;
+  max-height: 100vh;
 }
 
-.main{
-  flex: 4 1; /* Allow to grow and shrink */
+.main {
+  flex: 3 1 0; /* Ensure the main content grows and shrinks properly */
   display: flex;
   flex-direction: column;
+  overflow-y: auto; /* Allow main content to scroll if it overflows */
+  padding-bottom: 0;
   align-items: center;
-  justify-content: space-between; /* Space between content to push footer down */
-  padding: 0.5rem;
+  overflow: hidden;
 }
-
 .logo{
-  margin-right: 1rem;
+  width: 12vw;
+  padding-right: 12px;
+  padding-bottom: 5px;
 }
 
 .brand{
-  font-size: 2rem;
+  font-size: 1.7vw;
 
 }
 
 .upperSide{
-  padding: 1.5rem;
   border-bottom: 1px solid rgb(100, 100, 100);
-  height: 30%;
+  height: 50%;
+  align-items: center;
+  text-align: center;
 }
 
 .upperSideTop{
   display: flex;
-  align-items: center;
-  margin: 2rem;
-  margin-top: 0rem;
-  margin-left: 0.5rem;
+  align-self: center;
+  justify-content: center;
+  padding: 9px;
 }
 
 .addBtn{
@@ -91,7 +93,7 @@ body {
   color: white;
   padding: 0.5rem 1rem; /* Reduce padding for a smaller button */
   font-size: 1rem; /* Smaller font size */
-  width: 15rem; /* Smaller width */
+  width: 90%;
   align-items: center;
   justify-content: center;
   margin: 0;
@@ -100,15 +102,26 @@ body {
 
 }
 
+.bot > .chatimg{
+  background-color: rgb(53, 100, 21);
+}
+
+.chatimg{
+  background-color: white;
+}
+
 .middleside{
-  border-top: 1px solid rgb(105, 101, 101);;
+  flex-grow: 1; /* Allow it to take up remaining space in sidebar */
+  border-top: 1px solid rgb(105, 101, 101);
   margin-top: 2rem;
+  overflow-y: auto; /* Handle overflow of sessions */
 }
 
 
 .newChat:hover{
   background-color: rgb(105, 101, 101);
 }
+
 
 .sessions{
   width: 100%;
@@ -123,23 +136,11 @@ body {
   overflow-x: hidden;
 }
 
-@media (max-width: 992px) {
-  .sidebar {
-    flex: 2; /* Slightly reduce sidebar width */
-  }
-
-  .main {
-    flex: 10; /* Increase main content area */
-  }
-}
-
 .chats {
-  
-  max-width: 70rem;
-  height: calc(100vh - 10rem);
+  flex-grow: 1;
   overflow-y: auto; /* Enables vertical scrolling when content overflows */
-  padding-right: 1rem; /* Optional: Adds padding to prevent content from hiding under scrollbar */
-
+  padding-right: 10px; /* Optional: Adds padding to prevent content from hiding under scrollbar */
+  width: 100%;
 }
 
 .file-input-container {
@@ -167,30 +168,28 @@ body {
 
 .bot {
   background-color: rgb(28, 30, 58, 1);
-  width: fit-content;
+  width: 80%;
   border-radius: 0.5rem;
+
 }
 
 .chat {
   /* width: 70%; */
   margin: 1rem;
   padding: 2rem 4rem;
-  font-size: 1.2rem;
+  font-size: 0.9rem;
   display: flex;
   align-items: flex-start;
   text-align: justify;
 }
+
 .chatFooter {
-  /* margin-top: auto; */
-  margin-bottom: 2rem;
-  /* padding-top: 0px; */
-  width: 80%;
-  /* position: sticky; Keeps footer at the bottom */
+  width: 95%;
+  flex-shrink: 0; /* Ensures the footer stays at the bottom */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
 }
 
 .inp {
@@ -204,6 +203,7 @@ body {
   width: 100%;
 }
 form{
+  padding: 5px;
   width: 100%;
 }
 .inp > input {
@@ -234,4 +234,35 @@ form{
 .chatFooter p {
   margin: 0; /* Remove margin from the paragraph */
   text-align: center;
+}
+
+
+.document {
+  padding: 0.9rem;
+  margin-bottom: 5px;
+  width: 25%;
+  border-radius: 5px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  background-color:rgb(28, 30, 58, 1);;
+  column-gap: 10px;
+  position: relative;
+} 
+
+.close-icon {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  cursor: pointer;
+  /* font-size: 16px; */
+  color: white;
+  background-color: rgb(163, 148, 148);
+  border-radius: 50%;
+  padding: 1px 6px;
+}
+
+.docimg > img{
+  width: 4vw;
+  background-color: #C68FE6;
+  border-radius: 5px;
 }
